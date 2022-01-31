@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: baddeployment
+  labels:
+    app: badapp
+    tier: frontend
+spec:
+  selector: 
+    matchLabels:
+      app: badapp
+      tier: frontend
+  template:
+    metadata:
+      labels: 
+        app: badapp
+        tier: frontend
+    spec:
+      containers:
+      - image: michaelbraunbass/badwebapp
+        imagePullPolicy: Always
+        name: vbadapp
+        ports:
+        - containerPort: 8080
+          
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: badservice
+  labels:
+    app: badapp
+spec: 
+  ports:
+   - port: 80
+     targetPort: 8080
+  selector:
+    app: badapp
+    tier: frontend
+  type: LoadBalancer

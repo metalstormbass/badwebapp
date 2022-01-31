@@ -10,7 +10,7 @@ RUN apt update && apt install -y gcc
 RUN apt install -y libpolkit-gobject-1-0=0.105-26ubuntu1 libpolkit-agent-1-0=0.105-26ubuntu1 policykit-1=0.105-26ubuntu1
 
 #Install NGINX
-RUN apt-get update && apt-get install sudo -y && apt-get install netcat -y  &&  apt-get install nginx -y --no-install-recommends && apt-get install curl -y && apt-get install iputils-ping -y && apt-get install nmap -y
+RUN apt-get update && apt-get install sudo -y && apt-get install netcat-traditional -y  &&  apt-get install nginx -y --no-install-recommends && apt-get install curl -y && apt-get install iputils-ping -y && apt-get install nmap -y
 COPY nginx.default /etc/nginx/sites-available/default
 
 #Install Python
